@@ -9,6 +9,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 
 public class DownloadHelper {
 
@@ -31,6 +32,7 @@ public class DownloadHelper {
 		HttpGet httpget = new HttpGet(url);
 		HttpResponse response;
 		try {
+			//httpclient.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpRequestRetryHandler());
 			response = httpclient.execute(httpget);
 			HttpEntity entity = response.getEntity();
 			if (entity != null) {
